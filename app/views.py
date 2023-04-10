@@ -52,3 +52,10 @@ def update_webpage(request):
     Webpage.objects.update_or_create(name='navya',defaults={'topic_name':to,'url':'http://navya.com'})
 
     return render(request,'display_webpage.html',d)
+
+
+def display_delete(request):
+    d={'webpage':Webpage.objects.all()}
+    Webpage.objects.filter(topic_name='chess').delete()
+    Webpage.objects.all().delete()
+    return render(request,'display_webpage.html')
